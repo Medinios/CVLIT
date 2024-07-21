@@ -1,4 +1,3 @@
-'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -10,19 +9,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
       userID: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         allowNull: false,
-        references: "Users",
-        referencesKey: "id",
+        references: {
+        model: "Users",
+        key: "id",
+        }
       },
       CV: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
         allowNull: true,
       },
       createdAt: {

@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 
 //routes
-app.use("/user", userRouter);
+app.use("/user",authMiddleware, userRouter);
 
 app.get("/", (req, res) => {
   res.send("Not Protected data");
