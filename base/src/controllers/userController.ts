@@ -1,12 +1,13 @@
-import { Request, Response } from "express";
+import { Response } from "express";
+import { CreateUserService } from "../services/userService";
+import { responses, responsesKeys } from "../core/utils/responses";
 
 export const CreateUser = (req: any, res: Response) => {
   try {
     const authInfo = req.authInfo;
-    console.log(authInfo);
-    if (user) UpsertUser({ newUser: user, upsertIfEmpty: true });
-    res.status(200).send({ user });
+    if (authInfo) CreateUserService({ userId: authInfo.uId, email: authInfo.eml });
+    res.status(200).send({ status: responses[responsesKeys.CREATED_USER_SUCCESS]});
   } catch (error) {
-    res.status(500).send(error);
+    res.status(500).send({ error: error, status: responses[responsesKeys.CREATED_USER_ERROR]});
   }
 };

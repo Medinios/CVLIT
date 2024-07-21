@@ -1,7 +1,7 @@
 import sequelize from "../core/configs/dbConfig";
 import User from "./UserModel";
 
-const CV = sequelize.define("CVS", {
+const CV = sequelize.define("Cvs", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -21,4 +21,4 @@ const CV = sequelize.define("CVS", {
 
 CV.hasMany(User, { foreignKey: "userID" });
 
-export default User;
+export default CV;

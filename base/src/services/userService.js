@@ -12,11 +12,3 @@ export const CreateUserService = async ({ userId, email }) => {
   }
 };
 
-export const updateCVService = async (user) => {
-  try {
-    const createdUser = await User.create({ userId: user.userId });
-    return createdUser;
-  } catch (error) {
-    return error;
-  }
-};
